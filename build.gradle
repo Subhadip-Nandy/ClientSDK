@@ -1,0 +1,39 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.14'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+	repositories {
+		maven {
+			url = uri("https://maven.pkg.github.com/organizationformergedsdk/mergedsdk")
+			credentials {
+				username = "Subhadip-Nandy"
+				password = "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"
+			}
+		}
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	implementation 'com.payu:mergedsdk:0.0.3'
+	implementation fileTree(dir: './Libs', include: ['*.jar'])
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
